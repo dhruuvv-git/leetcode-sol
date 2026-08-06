@@ -1,0 +1,42 @@
+/*
+=== PROBLEM ===
+Example 1:
+
+Input: n = 10, t = 2
+
+Output: 10
+
+Explanation:
+
+The digit product of 10 is 0, which is divisible by 2, making it the smallest number greater than or equal to 10 that satisfies the condition.
+
+Example 2:
+
+Input: n = 15, t = 3
+
+Output: 16
+*/
+
+int smallestNumber(int n, int t) {
+    
+    
+while(1){
+    int a=n;
+    int b=1;
+
+    while(a>0){
+        int c = a%10;
+        b*=c;
+        a=a/10;
+    }
+    int d=0;
+        if((b==0)||((b%t)==0)){
+           return n;
+            }
+        else{
+            n+=1;
+        }
+        
+    
+}
+}
