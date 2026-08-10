@@ -1,0 +1,24 @@
+/*
+=== PROBLEM ===
+Example 1:
+
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
+*/
+
+#include <stdio.h>
+#include <string.h>
+int lengthOfLastWord(char* s) {
+    int i = strlen(s)-1;
+    int b = 0;
+    while (i >= 0 && s[i] == ' ') {
+        i--;
+    }
+    while (i >= 0 && s[i] != ' ') {
+        b++;
+        i--;
+    }
+    return b;
+    
+}
