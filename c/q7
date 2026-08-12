@@ -1,0 +1,55 @@
+/*
+=== PROBLEM ===
+xample 1:
+
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+int strStr(char* haystack, char* needle) {
+    int a = strlen(needle);
+    int b = strlen(haystack);
+
+    
+    if (a == 0) {
+        return 0;
+    }
+    
+    if (b < a) {
+        return -1;
+    }
+
+    int i = 0;
+    int e = 0;
+
+    for (i = 0; i <= b - a; i++) {
+        int f = 0;
+
+        
+        for (int j = 0; j < a; j++) {
+            
+            if (haystack[i + j] == needle[j]) {
+                f++;
+            } else {
+                break; 
+            }
+        }
+
+        
+        if (f == a) {
+            e++;
+            break; 
+        }
+    }
+
+    if (e == 0) {
+        return -1;
+    } else {
+        return i;
+    }
+}
