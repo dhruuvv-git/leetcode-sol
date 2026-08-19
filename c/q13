@@ -1,0 +1,49 @@
+/*
+=== PROBLEM ===
+Input: n = 10
+Output: 4
+Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+*/
+
+
+#define MAX_N 5000000
+
+
+
+static char isComposite[MAX_N] = {0}; 
+
+static int primeCount[MAX_N] = {0};   
+
+static int isComputed = 0;            
+
+int countPrimes(int n) {
+    if (n <= 2) {
+        return 0;
+    }
+
+    
+    if (isComputed == 0) {
+        isComposite[0] = 1;
+        isComposite[1] = 1;
+
+       
+        for (int i = 2; i * i < MAX_N; i++) {
+            if (isComposite[i] == 0) {
+                for (int j = i * i; j < MAX_N; j += i) {
+                    isComposite[j] = 1;
+                }
+            }
+        }
+
+        
+        int count = 0;
+        for (int i = 2; i < MAX_N; i++) {
+            if (isComposite[i] == 0) {
+                count++;
+            }
+            primeCount[i] = count;
+        }
+
+     
+        isComputed = 1; 
+    }
