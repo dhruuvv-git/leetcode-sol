@@ -1,0 +1,23 @@
+/*
+=== PROBLEM ===
+Example 1:
+
+Input: s = "Hello"
+Output: "hello"
+*/
+
+#include <string.h>
+char* toLowerCase(char* s) {
+    int a=strlen(s);
+    int i=0;
+    while(s[i]!='\0'){
+        if((s[i]>='A')&&(s[i]<='Z')){
+            char a=s[i] +32;
+            s[i]=a;
+        }
+        i++;
+    }
+    return s;
+
+    
+}
