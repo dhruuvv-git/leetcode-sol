@@ -1,0 +1,19 @@
+/*
+=== PROBLEM ===
+Input: num = 7
+Output: 1
+Explanation: 7 divides itself, hence the answer is 1.
+*/
+
+int countDigits(int num) {
+    int a=num;
+    int res=0;
+    while(a>0){
+        int b= a%10;
+        if(num%b==0){
+            res++;
+        }
+        a=a/10;
+    }
+    return res;
+}
