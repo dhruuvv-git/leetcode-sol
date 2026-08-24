@@ -1,0 +1,34 @@
+/*
+=== PROBLEM ===
+Input: nums = [2,5,6,9,10]
+Output: 2
+Explanation:
+The smallest number in nums is 2.
+The largest number in nums is 10.
+The greatest common divisor of 2 and 10 is 2
+*/
+
+int findGCD(int* nums, int numsSize) {
+    int a=nums[0];
+    int b=nums[0];
+    for(int i=0;i<numsSize;i++){
+        if(nums[i]>a){
+            a=nums[i];
+        }
+        if(nums[i]<b){
+            b=nums[i];
+        }
+    }
+    int i=b;
+    int res=1;
+    while(i>0){
+        if((a%i==0)&&(b%i==0)){
+            return i;
+        }
+        i--;
+
+    }
+    return 1;
+
+    
+}
