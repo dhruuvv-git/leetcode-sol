@@ -1,0 +1,37 @@
+/*
+=== PROBLEM ===
+Input: s = "(()())(())"
+Output: "()()()"
+Explanation: 
+The input string is "(()())(())", with primitive decomposition "(()())" + "(())".
+After removing outer parentheses of each part, this is "()()" + "()" = "()()()".
+*/
+
+char* removeOuterParentheses(char* s) {
+    int a=strlen(s);
+    char* res = (char*)malloc(sizeof(char) * (a + 1));
+    int count=0;
+    int b=0;
+    for(int i=0;i<a;i++){
+        if(s[i]=='('){
+            if(count>0){
+                res[b]=s[i];
+                b++;
+                
+
+            }
+            count++;
+            
+        }
+        else{
+            count--;
+            if(count>0){
+                res[b]=s[i];
+                b++;
+            }
+        }
+    }
+    res[b]='\0';
+    return res;
+    
+}
