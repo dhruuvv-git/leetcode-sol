@@ -1,0 +1,45 @@
+/*
+=== PROBLEM ===
+Example 1:
+
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+*/
+
+
+
+
+bool isAlnumCustom(char c) {
+    return (c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+           (c >= '0' && c <= '9');
+}
+char toLowerCustom(char c) {
+    if (c >= 'A' && c <= 'Z') {
+        return c + ('a' - 'A');
+    }
+    return c;
+}
+
+bool isPalindrome(char* s) {
+    int left = 0;
+    int right = strlen(s) - 1;
+    
+    while (left < right) {
+        while (left < right && !isAlnumCustom(s[left])) {
+            left++;
+        }
+        while (left < right && !isAlnumCustom(s[right])) {
+            right--;
+        }
+        
+        if (toLowerCustom(s[left]) != toLowerCustom(s[right])) {
+            return false;
+        }
+        
+        left++;
+        right--;
+    }
+    return true;
+}
