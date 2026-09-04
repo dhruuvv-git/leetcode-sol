@@ -1,0 +1,36 @@
+/*
+=== PROBLEM ===
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+*/
+
+struct ListNode* reverseBetween(struct ListNode* head, int left, int right) {
+    if (head == NULL || left == right) return head;
+
+    struct ListNode *prev = NULL;
+    struct ListNode *curr = head;
+
+    for (int i = 1; i < left; i++) {
+        prev = curr;
+        curr = curr->next;
+    }
+
+    struct ListNode *subHead = curr;
+    struct ListNode *subPrev = NULL;
+
+    for (int i = 0; i < (right - left + 1); i++) {
+        struct ListNode *forw = curr->next;
+        curr->next = subPrev;
+        subPrev = curr;
+        curr = forw;
+    }
+
+    subHead->next = curr;
+
+    if (prev == NULL) {
+        return subPrev;
+    }
+
+    prev->next = subPrev;
+    return head;
+}
