@@ -1,0 +1,39 @@
+/*
+=== PROBLEM ===
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+*/
+
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+    if (head == NULL) {
+        return NULL;
+    }
+
+    
+    int length = 0;
+    struct ListNode* temp = head;
+    while (temp != NULL) {
+        length++;
+        temp = temp->next;
+    }
+
+   
+    if (n == length) {
+        struct ListNode* newHead = head->next;
+        
+        return newHead;
+    }
+
+
+    struct ListNode* prev = head;
+    for (int i = 1; i < length - n; i++) {
+        prev = prev->next;
+    }
+
+   
+    
+    prev->next = prev->next->next;
+   
+
+    return head;
+}
