@@ -1,0 +1,35 @@
+/*
+=== PROBLEM ===
+Input: head = [0,1,2], k = 4
+Output: [2,0,1]
+*/
+
+struct ListNode* rotateRight(struct ListNode* head, int k) {
+    int i=0;
+    if(head=='\0'||head->next=='\0'){
+        return head;
+    }
+    struct ListNode* tail=head;
+    int l=1;
+    while(tail->next!='\0'){
+        tail=tail->next;
+        l++;
+    }
+    k=k%l;
+    
+    if(k==0){
+        return head;
+    }
+
+    tail->next=head;
+    struct ListNode* newtail=head;
+    int a=l-k-1;
+
+   for(int j=0;j<a;j++){
+        newtail=newtail->next;
+        
+    }
+    struct ListNode* newhead=newtail->next;
+    newtail->next='\0';
+    return newhead;
+}
