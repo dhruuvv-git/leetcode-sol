@@ -1,0 +1,18 @@
+/*
+=== PROBLEM ===
+Input: s = "zaza"
+
+Output: 160
+*/
+
+int reverseDegree(char* s) {
+    int a=0;
+    int x=strlen(s);
+    for(int i=0;i<x;i++){
+        int c='z'-s[i]+1;
+        a+=c*(i+1);
+
+    }
+    return a;
+    
+}
