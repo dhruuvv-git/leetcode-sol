@@ -1,0 +1,29 @@
+/*
+=== PROBLEM ===
+Input: root = [3,9,20,null,null,15,7]
+Output: true
+*/
+
+int check(struct TreeNode* root){
+    if(root==NULL){
+        return 0;
+    }
+    int left= check(root->left);
+    if(left == -1){
+        return -1;
+    }
+    int right=check(root->right);
+    if(right == -1){
+        return -1;
+    }
+    if(abs(left -right)>1){
+        return -1;
+    }
+    return (left > right ? left:right) +1;
+
+}
+bool isBalanced(struct TreeNode* root) {
+    int a=check(root);
+    return a!=-1;
+    
+}
