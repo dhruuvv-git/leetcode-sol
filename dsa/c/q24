@@ -1,0 +1,26 @@
+/*
+=== PROBLEM ===
+Input: root = [1,null,2,3]
+
+Output: [1,2,3]
+*/
+
+int a[100];
+int top=0;
+void trav(struct TreeNode* root){
+    if(root==NULL){
+        return;
+    }
+    a[top]=root->val;
+    top++;
+    trav(root->left);
+    trav(root->right);
+}
+int* preorderTraversal(struct TreeNode* root, int* returnSize) {
+    top=0;
+    trav(root);
+    *returnSize=top;
+   
+    return a;
+    
+}
