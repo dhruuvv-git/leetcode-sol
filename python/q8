@@ -1,0 +1,32 @@
+/*
+=== PROBLEM ===
+Example 1:
+
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "(*)"
+Output: true
+*/
+
+class Solution(object):
+    def checkValidString(self, s):
+        min, max = 0, 0
+        
+        for c in s:
+            if c == '(':
+                min += 1
+                max += 1
+            elif c == ')':
+                min-= 1
+                max-= 1
+            else:
+                min-= 1
+                max+= 1
+            
+            if max < 0:
+                return False
+            if min < 0:
+                min = 0
+        return min == 0
