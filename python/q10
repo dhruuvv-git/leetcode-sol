@@ -1,0 +1,42 @@
+/*
+=== PROBLEM ===
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+*/
+
+class Solution(object):
+    def searchRange(self, nums, target):
+        i1 = -1
+        i2 = -1
+
+        low = 0
+        high = len(nums) - 1
+
+       
+        while low <= high:
+            mid = low + (high - low) // 2
+
+            if nums[mid] == target:
+                i1 = mid
+                high = mid - 1
+            elif nums[mid] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        low = 0
+        high = len(nums) - 1
+
+        
+        while low <= high:
+            mid = low + (high - low) // 2
+
+            if nums[mid] == target:
+                i2 = mid
+                low = mid + 1
+            elif nums[mid] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        return [i1, i2]
