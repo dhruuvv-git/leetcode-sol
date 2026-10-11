@@ -1,0 +1,38 @@
+/*
+=== PROBLEM ===
+Input: s = "a"
+Output: 1
+Explanation: The longest palindrome that can be built is "a", whose length is 1.
+*/
+
+class Solution(object):
+    def longestPalindrome(self, s):
+        lower = [0] * 26
+        upper = [0] * 26
+
+        for char in s:
+            if 'a' <= char <= 'z':
+                lower[ord(char) - ord('a')] += 1
+            elif 'A' <= char <= 'Z':
+                upper[ord(char) - ord('A')] += 1
+
+        count = 0
+        has_odd = False
+
+        for i in range(26):
+            if lower[i] % 2 == 0:
+                count += lower[i]
+            else:
+                count += lower[i] - 1
+                has_odd = True
+
+            if upper[i] % 2 == 0:
+                count += upper[i]
+            else:
+                count += upper[i] - 1
+                has_odd = True
+
+        if has_odd:
+            count += 1
+
+        return count
