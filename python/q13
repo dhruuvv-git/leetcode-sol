@@ -1,0 +1,21 @@
+/*
+=== PROBLEM ===
+Input: s = "abcd"
+Output: "dcbabcd"
+*/
+
+class Solution(object):
+    def shortestPalindrome(self, s):
+        if not s:
+            return s
+        combined = s + '#' + s[::-1]
+        pi = [0] * len(combined)
+        for i in range(1, len(combined)):
+            k = pi[i - 1]
+            while k > 0 and combined[i] != combined[k]:
+                k = pi[k - 1]
+            if combined[i] == combined[k]:
+                k += 1
+            pi[i] = k
+        p = pi[-1]
+        return s[p:][::-1] + s
