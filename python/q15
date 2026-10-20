@@ -1,0 +1,28 @@
+/*
+=== PROBLEM ===
+Input: x = 2.00000, n = 10
+Output: 1024.00000
+*/
+
+class Solution(object):
+    def myPow(self, x, n):
+        if n == 0:
+            return 1.0
+        
+       
+        if n < 0:
+            x = 1 / x
+            n = -n
+            
+        ans = 1
+        curr = x
+        
+        while n > 0:
+           
+            if n % 2 == 1:
+                ans *= curr
+          
+            curr *= curr
+            n //= 2
+            
+        return ans
