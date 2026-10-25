@@ -1,0 +1,43 @@
+/*
+=== PROBLEM ===
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+*/
+
+char* addBinary(char* a, char* b) {
+    int i = strlen(a) - 1;
+    int j = strlen(b) - 1;
+    int max_len = i > j ? i : j;
+    char* s = malloc(max_len + 4);
+    int k = 0;
+    int carry = 0;
+
+    while (i >= 0 || j >= 0 || carry) {
+        if (i >= 0) {
+            carry += a[i] - '0';
+            i--;
+        }
+        if (j >= 0) {
+            carry += b[j] - '0';
+            j--;
+        }
+        s[k++] = (carry % 2) + '0';
+        carry /= 2;
+    }
+    
+    s[k] = '\0';
+
+    for (int left = 0, right = k - 1; left < right; left++, right--) {
+        char temp = s[left];
+        s[left] = s[right];
+        s[right] = temp;
+    }
+
+    return s;
+}
